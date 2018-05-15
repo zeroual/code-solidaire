@@ -1,0 +1,128 @@
+version: 2
+jobs:
+  build-font:
+    working_directory: ~/circleci-code-solidaire
+
+    docker:
+          - image: circleci/node:10-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: yarn-
+
+      - run:
+          name: Download dependencies (frontend)
+          working_directory: frontend
+          command: yarn install
+
+      - run:
+           name: Front tests
+           working_directory: frontend
+           command: yarn test --watch=false --progress=false
+
+      - run:
+           name: Build frontend
+           working_directory: frontend
+           command: yarn build --prod
+
+      - persist_to_workspace:
+           root: frontend
+           paths:
+             - dist
+
+      - save_cache:
+           key: yarn-{{ checksum "frontend/package.json" }}
+           paths:
+             - ~/.cache/yarn
+             - frontend/node_modules
+             
+  build-back:
+    working_directory: ~/circleci-code-solidaire
+
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+    steps:
+
+      - checkout
+
+      - setup_remote_docker
+
+      - restore_cache:
+          key: maven-
+
+      - run:
+          name: Download dependencies (backend)
+          working_directory: backend
+          command: mvn dependency:go-offline
+
+      - run:
+         name: Build application
+         working_directory: backend
+         command: mvn package --quiet
+
+      - persist_to_workspace:
+           root: backend
+           paths:
+             - .
+      - save_cache:
+         key: maven-{{checksum "backend/pom.xml"}}
+         paths:
+           - ~/.m2
+
+  deploy:
+    working_directory: ~/circleci-code-solidaire
+    machine:
+      enabled: true
+    steps:
+      - attach_workspace:
+          at: frontend
+
+      - attach_workspace:
+          at: backend
+
+      - run: mkdir -p backend/target/classes/static/
+
+      - run: cp -a frontend/dist/frontend/. backend/target/classes/static/
+
+      - restore_cache:
+          key: maven-
+
+      - run:
+          name: Download dependencies (backend)
+          working_directory: backend
+          command: mvn dependency:go-offline
+
+      - run:
+         name: Build application
+         working_directory: backend
+         command: mvn package --quiet
+
+      - run:
+          name: Build Docker image (backend)
+          working_directory: backend
+          command: docker build -t backend .
+
+      - run:
+          name: Deploy Master to Heroku
+          working_directory: backend
+          command: docker login --username=${HEROKU_USERNAME} --password=${HEROKU_PASSWORD} registry.heroku.com
+
+      - run: docker tag backend registry.heroku.com/code-solidaire/web
+      - run: docker push registry.heroku.com/code-solidaire/web
+
+
+workflows:
+  version: 2
+  build_app:
+    jobs:
+      - build-font
+      - build-back:
+          requires:
+            - build-font
+      - deploy:
+          requires:
+            - build-back
+          filters:
+            branches:
+              only: master
