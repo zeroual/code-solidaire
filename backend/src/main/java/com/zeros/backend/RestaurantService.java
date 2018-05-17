@@ -25,8 +25,6 @@ public class RestaurantService {
                 .radius(200)
                 .type(PlaceType.RESTAURANT)
                 .await();
-//        Stream.of(searchResponse.results).limit(1)
-//                .forEach(r -> System.out.println(">>>>>>>>>>>>>>" + Arrays.toString(r.types)));
         return Stream.of(searchResponse.results).limit(5)
                 .map(s -> new Restaurant(s.name,
                         new Location(s.geometry.location.lat, s.geometry.location.lng), s.formattedAddress))
