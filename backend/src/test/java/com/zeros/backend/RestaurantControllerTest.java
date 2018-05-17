@@ -21,7 +21,7 @@ public class RestaurantControllerTest {
 
     @Test
     public void shouldReturn200WhenCallingGetRestaurants() throws Exception {
-        mockMvc.perform(get("/restaurants")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/restaurants")).andExpect(status().isOk());
     }
 
 }
