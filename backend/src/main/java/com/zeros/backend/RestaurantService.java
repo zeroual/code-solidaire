@@ -27,12 +27,9 @@ public class RestaurantService {
                 .type(PlaceType.RESTAURANT)
                 .await();
         return Stream.of(searchResponse.results).limit(10)
-                .map(s -> {
-                    List<String> photosReference = Stream.of(s.photos).map(photo -> photo.photoReference).collect(Collectors.toList());
-                    return new Restaurant(s.name,
+                .map(s -> new Restaurant(s.name,
                             new Location(s.geometry.location.lat, s.geometry.location.lng),
-                            s.vicinity, Arrays.asList(s.photos[0].photoReference), s.rating);
-                })
+                            s.vicinity, Arrays.asList(s.photos[0].photoReference), s.rating))
                 .collect(Collectors.toList());
     }
 }
