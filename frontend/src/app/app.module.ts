@@ -6,6 +6,7 @@ import {RestaurantService} from "./shared/services/restaurant.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material";
 import {RestaurantsComponent} from "./components/restaurants/restaurants.component";
+import {BarRatingModule} from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {RestaurantsComponent} from "./components/restaurants/restaurants.compone
   ],
   imports: [
     MatCardModule,
+    BarRatingModule,
     BrowserModule,
     HttpClientModule
   ],

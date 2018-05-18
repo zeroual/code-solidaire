@@ -15,5 +15,6 @@ public class Restaurant {
     private final Location location;
     private final String address;
     private List<String> photosReference;
+    private double rating;
 
 }

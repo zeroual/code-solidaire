@@ -17,12 +17,8 @@ export class RestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.rs.getNearbyRestaurants()
-    //   .subscribe(result => {
-    //     this.result = JSON.stringify(result);
-    //   });
     this.rs.getNearbyRestaurants().subscribe( result =>
-      this.restaurants = result.map( r =>  new Restaurant(r.name, r.address, new Location(r.location.lat, r.location.lng), r.photosReference) ) )
+      this.restaurants = result.map( r =>  new Restaurant(r.name, r.address, new Location(r.location.lat, r.location.lng), r.photosReference, r.rating) ) )
   }
 
 }

@@ -26,18 +26,12 @@ public class RestaurantService {
                 .radius(200)
                 .type(PlaceType.RESTAURANT)
                 .await();
-        Stream.of(searchResponse.results).limit(1).forEach(
-                r -> {
-                    System.out.println(">>>>>>>>>>><" + r.icon.getHost() + r.icon.getPath());
-                    System.out.println("============" + Arrays.toString(r.photos[0].htmlAttributions));
-                    System.out.println("------------" + r.photos[0].photoReference);
-                }
-        );
-        return Stream.of(searchResponse.results).limit(5)
+        return Stream.of(searchResponse.results).limit(10)
                 .map(s -> {
                     List<String> photosReference = Stream.of(s.photos).map(photo -> photo.photoReference).collect(Collectors.toList());
                     return new Restaurant(s.name,
-                            new Location(s.geometry.location.lat, s.geometry.location.lng), s.vicinity, Arrays.asList(s.photos[0].photoReference));
+                            new Location(s.geometry.location.lat, s.geometry.location.lng),
+                            s.vicinity, Arrays.asList(s.photos[0].photoReference), s.rating);
                 })
                 .collect(Collectors.toList());
     }

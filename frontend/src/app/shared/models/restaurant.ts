@@ -6,7 +6,8 @@ export class Restaurant {
     public name: string,
     public adress: string,
     public location: Location,
-    public photosReference: string[]) {}
+    public photosReference: string[],
+    public rating: number) {}
 
     public getImagesUrls(): string[] {
       let urls: string[] = [];
@@ -14,7 +15,6 @@ export class Restaurant {
         urls.push('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + reference +
           '&key=AIzaSyBvLjHOMjmRVWELPcxI-YJ43rGJk2-cw2w')
       );
-      console.log(">>>>>>>>>>>>", urls);
       return urls;
     }
 }
