@@ -1,0 +1,23 @@
+<div *ngFor="let r of restaurants">
+  <!--{{r.name}}, {{r.adress}}, {{r.location.latitude}}, {{r.location.longitude}}-->
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Restaurant: {{r.name}}</mat-card-title>
+      <mat-card-subtitle>Adresse: {{r.adress}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngFor="let image of r.getImagesUrls()"
+         mat-card-image [src]="image">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>DÉTAILS</button>
+      <button mat-button>POSITION</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

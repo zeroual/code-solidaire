@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RestaurantService} from "./shared/services/restaurant.service";
-import { RestaurantsComponent } from './restaurants/restaurants.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatCardModule} from "@angular/material";
+import {RestaurantsComponent} from "./components/restaurants/restaurants.component";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
     RestaurantsComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     HttpClientModule
   ],

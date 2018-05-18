@@ -9,6 +9,7 @@ import com.google.maps.model.PlacesSearchResponse;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,14 +21,24 @@ public class RestaurantService {
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyBvLjHOMjmRVWELPcxI-YJ43rGJk2-cw2w")
                 .build();
-        LatLng searchLocation = new LatLng(48.874037, 2.339619);
-        PlacesSearchResponse searchResponse = PlacesApi.nearbySearchQuery(context, searchLocation)
+        LatLng OperaParis = new LatLng(48.874037, 2.339619);
+        PlacesSearchResponse searchResponse = PlacesApi.nearbySearchQuery(context, OperaParis)
                 .radius(200)
                 .type(PlaceType.RESTAURANT)
                 .await();
+        Stream.of(searchResponse.results).limit(1).forEach(
+                r -> {
+                    System.out.println(">>>>>>>>>>><" + r.icon.getHost() + r.icon.getPath());
+                    System.out.println("============" + Arrays.toString(r.photos[0].htmlAttributions));
+                    System.out.println("------------" + r.photos[0].photoReference);
+                }
+        );
         return Stream.of(searchResponse.results).limit(5)
-                .map(s -> new Restaurant(s.name,
-                        new Location(s.geometry.location.lat, s.geometry.location.lng), s.formattedAddress))
+                .map(s -> {
+                    List<String> photosReference = Stream.of(s.photos).map(photo -> photo.photoReference).collect(Collectors.toList());
+                    return new Restaurant(s.name,
+                            new Location(s.geometry.location.lat, s.geometry.location.lng), s.vicinity, Arrays.asList(s.photos[0].photoReference));
+                })
                 .collect(Collectors.toList());
     }
 }
