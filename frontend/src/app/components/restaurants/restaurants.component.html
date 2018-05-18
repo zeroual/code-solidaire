@@ -1,5 +1,12 @@
+<qr-scanner
+  [debug]="false"
+  [canvasWidth]="400"
+  [canvasHeight]="400"
+  [stopAfterScan]="true"
+  [updateTime]="500">
+</qr-scanner>
+
 <div *ngFor="let r of restaurants">
-  <!--{{r.name}}, {{r.adress}}, {{r.location.latitude}}, {{r.location.longitude}}-->
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>

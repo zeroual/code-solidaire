@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material";
 import {RestaurantsComponent} from "./components/restaurants/restaurants.component";
 import {BarRatingModule} from "ngx-bar-rating";
+import {NgQrScannerModule} from "angular2-qrscanner";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {BarRatingModule} from "ngx-bar-rating";
     MatCardModule,
     BarRatingModule,
     BrowserModule,
+    NgQrScannerModule,
     HttpClientModule
   ],
   providers: [RestaurantService],
