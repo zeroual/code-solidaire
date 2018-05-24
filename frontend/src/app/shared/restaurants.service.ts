@@ -37,4 +37,10 @@ export class RestaurantsService {
     return this.googlePlacePhotoUrl + '?maxwidth=400&photoreference=' + photo + '&key=' + this.googleMapsKey;
   }
 
+  public rewardMeal(restaurantId: string ): Promise<any> {
+    return this.httpClient
+      .post('/api/v1/reward', {'restaurantId': restaurantId})
+      .toPromise();
+  }
+
 }

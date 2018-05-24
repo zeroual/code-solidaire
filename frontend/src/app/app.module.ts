@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
@@ -7,11 +7,13 @@ import {HomeComponent} from './home/home.component';
 import {RestaurantComponent} from './restaurant/restaurant.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RestaurantsService} from "./shared/restaurants.service";
-import {MapViewerComponent} from './map-viewer/map-viewer.component';
-import {RestaurantSuggestionsMapComponent} from './restaurant-suggestions-map/restaurant-suggestions-map.component';
-import {RestaurantSuggestionsListComponent} from './restaurant-suggestions-list/restaurant-suggestions-list.component';
 import {UiModule} from "./ui.module";
-
+import {ScannerComponent} from "./scanner/scanner.component";
+import {QrcodePageComponent} from "./qrcode-page/qrcode-page.component";
+import {RestaurantSuggestionsListComponent} from "./restaurant-suggestions-list/restaurant-suggestions-list.component";
+import {RestaurantSuggestionsMapComponent} from "./restaurant-suggestions-map/restaurant-suggestions-map.component";
+import {MapViewerComponent} from "./map-viewer/map-viewer.component";
+import {NgQrScannerModule} from "angular2-qrscanner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +23,16 @@ import {UiModule} from "./ui.module";
     MapViewerComponent,
     RestaurantSuggestionsMapComponent,
     RestaurantSuggestionsListComponent,
+    QrcodePageComponent,
+    ScannerComponent
   ],
   imports: [
     RoutingModule,
     UiModule,
-    HttpClientModule
+    HttpClientModule,
+    NgQrScannerModule,
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [RestaurantsService],
   bootstrap: [AppComponent]
 })

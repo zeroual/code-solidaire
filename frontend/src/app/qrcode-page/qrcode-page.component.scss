@@ -1,0 +1,50 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgrey;
+}
+
+.Qrcode__scanned-value {
+  line-height: 30px;
+  font-size: 20px;
+  color: green;
+  text-align: center;
+
+  &-not-scanned {
+    color: red;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.Qrcode__col-centred {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Qrcode__row-centred {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Qrcode__card {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Qrcode__hidden {
+  visibility: hidden;
+}
+
+.Qrcode__visible {
+  visibility: visible;
+}
