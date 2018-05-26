@@ -1,4 +1,4 @@
-package com.zeros.backend;
+package com.zeros.backend.timeline;
 
 public class Location {
 

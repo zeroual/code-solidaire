@@ -1,4 +1,4 @@
-package com.zeros.backend;
+package com.zeros.backend.timeline;
 
 import com.google.maps.GeoApiContext;
 import com.google.maps.PlacesApi;
@@ -23,7 +23,7 @@ public class RestaurantRecommender {
         this.geoApiContext = geoApiContext;
     }
 
-    List<Restaurant> getNearbyRestaurant() {
+    public List<Restaurant> getNearbyRestaurant() {
         LatLng searchLocation = new LatLng(48.874037, 2.339619);
         try {
             PlacesSearchResponse searchResponse = PlacesApi.nearbySearchQuery(geoApiContext, searchLocation)
