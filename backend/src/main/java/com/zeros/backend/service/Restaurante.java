@@ -1,19 +1,22 @@
-package com.zeros.backend;
+package com.zeros.backend.service;
 
 import java.util.List;
 
-public class Restaurant {
+public class Restaurante {
 
     private String name;
     private Location location;
     private float rating;
     private List<String> photosReference;
+    private Route distance;
 
-    Restaurant(String name, Location location, float rating, List<String> photos) {
+    Restaurante(String name, Location location, float rating, List<String> photos, 
+    		Route distance) {
         this.name = name;
         this.location = location;
         this.rating = rating;
         this.photosReference = photos;
+        this.distance = distance;
     }
 
     public String getName() {
@@ -31,4 +34,8 @@ public class Restaurant {
     public List<String> getPhotosReference() {
         return photosReference;
     }
+
+	public Route getDistance() {
+		return distance;
+	}    
 }

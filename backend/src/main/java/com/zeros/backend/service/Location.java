@@ -1,4 +1,6 @@
-package com.zeros.backend;
+package com.zeros.backend.service;
+
+import com.google.maps.model.LatLng;
 
 public class Location {
 
@@ -16,5 +18,9 @@ public class Location {
 
     public double getLng() {
         return lng;
+    }
+    
+    LatLng toLatLng(){
+    	return new LatLng(this.lat, this.lng);
     }
 }
