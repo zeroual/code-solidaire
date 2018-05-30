@@ -3,8 +3,8 @@ import {async, ComponentFixture, ComponentFixtureAutoDetect, TestBed} from '@ang
 import {HomeComponent} from './home.component';
 import {RestaurantsService} from '../shared/restaurants.service';
 import {Restaurant} from "../shared/Restaurant";
-import {RestaurantComponent} from "../restaurant/restaurant.component";
-import {MatCardModule} from "@angular/material";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {UiModule} from "../ui.module";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -24,9 +24,12 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, RestaurantComponent],
-      imports: [MatCardModule],
-      providers: [{provide: ComponentFixtureAutoDetect, useValue: true}]
+      declarations: [HomeComponent],
+      imports: [UiModule],
+      providers: [
+        {provide: ComponentFixtureAutoDetect, useValue: true},
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).overrideComponent(HomeComponent, {
       set: {
         providers: [{provide: RestaurantsService, useValue: mockRestaurantService}]
@@ -39,9 +42,11 @@ describe('HomeComponent', () => {
     });
   }));
 
-  it('should fetch and display all nearby restaurants', () => {
-    const restaurantCount = element.querySelectorAll('app-restaurant').length;
-    expect(restaurantCount).toEqual(1);
+  it('should create component', () => {
+    expect(component).toBeTruthy();
   });
+  it('should fetch nearby restaurants', () => {
+    expect(component.restaurants).toEqual(restaurants);
+  })
 
 });

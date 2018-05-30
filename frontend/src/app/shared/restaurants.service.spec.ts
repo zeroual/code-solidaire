@@ -27,8 +27,10 @@ describe('RestaurantsService', () => {
       {
         'id': 'id',
         'name': 'name',
-        'lat': 0,
-        'lng': 0,
+        'location': {
+          'lat': 0,
+          'lng': 0,
+        },
         'photosReference': [photoReference],
       }
     ];
