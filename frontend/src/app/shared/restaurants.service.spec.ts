@@ -32,6 +32,7 @@ describe('RestaurantsService', () => {
           'lng': 0,
         },
         'photosReference': [photoReference],
+        //  TODO test
       }
     ];
 

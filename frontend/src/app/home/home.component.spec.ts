@@ -18,6 +18,7 @@ describe('HomeComponent', () => {
     lng: 2,
     photos: [],
     photo: ''
+    // TODO test
   }];
   const coordinates = {latitude: 0, longitude: 0};
   const mockRestaurantService = {
