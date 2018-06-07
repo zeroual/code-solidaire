@@ -1,0 +1,31 @@
+<mat-card class="Qrcode__card">
+  <mat-card-header>
+    <h1>Scannez votre QR code</h1>
+  </mat-card-header>
+  <app-scanner
+    (qrCode)="updateQrCodeValue($event)"
+    style="max-height: 400px"></app-scanner>
+  <mat-card-content class="Qrcode__col-centred">
+    <h2>Resultat du scan</h2>
+    <span [class]="qrCodeValue ? 'Qrcode__scanned-value': 'Qrcode__scanned-value-not-scanned'">
+      {{qrCodeValue ? qrCodeValue : 'Pas de valeur !'}}
+    </span>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="Qrcode__row-centred">
+      <a mat-raised-button routerLink="/">Retour</a>
+      <button
+        [disabled]="!qrCodeValue"
+        #buttonValidate
+        (click)="validateQrcode()"
+        mat-raised-button>
+        Valider
+      </button>
+      <mat-progress-spinner
+        *ngIf="!hideProgressBar"
+        diameter="35"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+  </mat-card-actions>
+</mat-card>

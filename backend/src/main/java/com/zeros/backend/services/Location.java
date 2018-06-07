@@ -1,11 +1,11 @@
-package com.zeros.backend.service;
+package com.zeros.backend.services;
 
 public class Location {
 
     private double lat;
     private double lng;
 
-    Location(double lat, double lng) {
+    public Location(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;
     }

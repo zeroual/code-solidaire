@@ -1,4 +1,4 @@
-package com.zeros.backend.service;
+package com.zeros.backend.services;
 
 import java.math.BigDecimal;
 import java.time.Duration;

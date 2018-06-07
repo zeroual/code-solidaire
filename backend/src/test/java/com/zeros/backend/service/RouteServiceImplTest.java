@@ -2,17 +2,20 @@ package com.zeros.backend.service;
 
 import com.google.maps.model.TravelMode;
 import com.zeros.backend.BackendApplication;
+import com.zeros.backend.services.Location;
+import com.zeros.backend.services.Route;
+import com.zeros.backend.services.RouteEstimator;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = BackendApplication.class)
 @ActiveProfiles("ut")
-@RunWith(SpringRunner.class)
 public class RouteServiceImplTest {
 
     @Autowired

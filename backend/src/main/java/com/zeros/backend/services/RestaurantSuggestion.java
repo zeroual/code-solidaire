@@ -1,8 +1,8 @@
-package com.zeros.backend.service;
+package com.zeros.backend.services;
 
 import java.util.List;
 
-public class Restaurant {
+public class RestaurantSuggestion {
 
     private String name;
     private Location location;
@@ -10,8 +10,7 @@ public class Restaurant {
     private List<String> photosReference;
     private Route route;
 
-    Restaurant(String name, Location location, float rating, List<String> photos,
-               Route route) {
+    public RestaurantSuggestion(String name, Location location, float rating, List<String> photos, Route route) {
         this.name = name;
         this.location = location;
         this.rating = rating;
