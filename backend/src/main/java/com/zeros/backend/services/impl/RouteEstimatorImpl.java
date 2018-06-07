@@ -1,11 +1,13 @@
-package com.zeros.backend.services;
+package com.zeros.backend.services.impl;
 
 import com.google.maps.DistanceMatrixApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.TravelMode;
-import com.zeros.backend.models.Location;
+import com.zeros.backend.services.Location;
+import com.zeros.backend.services.Route;
+import com.zeros.backend.services.RouteEstimator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

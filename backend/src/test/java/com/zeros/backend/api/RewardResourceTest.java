@@ -1,6 +1,5 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.models.Location;
 import com.zeros.backend.models.Restaurant;
 import com.zeros.backend.repositories.RestaurantRepository;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static java.util.Collections.emptyList;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,7 +24,6 @@ class RewardResourceTest {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
-
 
     @Autowired
     MockMvc mockMvc;
@@ -41,13 +38,12 @@ class RewardResourceTest {
 
     @Test
     void should_return_ok_status_when_restaurant_exists() throws Exception {
-        Restaurant restaurant = new Restaurant("Restaurant Opéra",
-                new Location(48.871140D, 2.332238D), 4, emptyList(), null);
-        Restaurant save = restaurantRepository.save(restaurant);
+        Restaurant restaurant = new Restaurant("RestaurantSuggestion Opéra");
+        Restaurant storedRestaurant = restaurantRepository.save(restaurant);
 
         mockMvc.perform(post("/api/v1/reward")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .content("{\"restaurantId\":" + save.getId() + "}"))
+                .content("{\"restaurantId\":" + storedRestaurant.getId() + "}"))
                 .andExpect(status().isOk());
     }
 

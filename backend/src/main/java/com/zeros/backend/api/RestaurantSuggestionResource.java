@@ -1,7 +1,7 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.models.Restaurant;
-import com.zeros.backend.services.RestaurantRecommender;
+import com.zeros.backend.services.RestaurantSuggester;
+import com.zeros.backend.services.RestaurantSuggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +14,10 @@ import java.util.List;
 public class RestaurantSuggestionResource {
 
     @Autowired
-    private RestaurantRecommender restaurantRecommender;
+    private RestaurantSuggester restaurantSuggester;
 
     @GetMapping("/restaurants")
-    public List<Restaurant> getRestaurants() {
-        return restaurantRecommender.getNearbyRestaurant();
+    public List<RestaurantSuggestion> getRestaurants() {
+        return restaurantSuggester.getNearbyRestaurant();
     }
 }

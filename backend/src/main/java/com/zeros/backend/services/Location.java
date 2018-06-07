@@ -1,4 +1,4 @@
-package com.zeros.backend.models;
+package com.zeros.backend.services;
 
 public class Location {
 
