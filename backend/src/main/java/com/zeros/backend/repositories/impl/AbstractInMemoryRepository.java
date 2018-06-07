@@ -27,9 +27,11 @@ public abstract class AbstractInMemoryRepository<T extends Entity> implements Re
     @Override
     public T save(T entity) {
         try {
-            Field idField = entity.getClass().getSuperclass().getDeclaredField("id");
-            idField.setAccessible(true);
-            ReflectionUtils.setField(idField, entity, ++idCounter);
+            if(!entityById.containsKey(entity.getId())) {
+                Field idField = entity.getClass().getSuperclass().getDeclaredField("id");
+                idField.setAccessible(true);
+                ReflectionUtils.setField(idField, entity, ++idCounter);
+            }
             entityById.put(entity.getId(), entity);
             return entity;
         } catch (NoSuchFieldException e) {
