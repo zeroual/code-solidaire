@@ -25,8 +25,8 @@ export class RestaurantsService {
       return {
         id: restaurant.id,
         name: restaurant.name,
-        lat: restaurant.lat,
-        lng: restaurant.lng,
+        lat: restaurant.location.lat,
+        lng: restaurant.location.lng,
         photos: photos,
         photo: photos[0]
       }

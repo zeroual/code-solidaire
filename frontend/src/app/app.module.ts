@@ -1,35 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import {AppComponent} from './app.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 import {RoutingModule} from "./routing.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule,MatToolbarModule} from "@angular/material";
-import { HomeComponent } from './home/home.component';
-import { RestaurantComponent } from './restaurant/restaurant.component';
+import {HomeComponent} from './home/home.component';
+import {RestaurantComponent} from './restaurant/restaurant.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {RestaurantsService} from "./shared/restaurants.service";
+import {MapViewerComponent} from './map-viewer/map-viewer.component';
+import {RestaurantSuggestionsMapComponent} from './restaurant-suggestions-map/restaurant-suggestions-map.component';
+import {RestaurantSuggestionsListComponent} from './restaurant-suggestions-list/restaurant-suggestions-list.component';
+import {UiModule} from "./ui.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     HomeComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    MapViewerComponent,
+    RestaurantSuggestionsMapComponent,
+    RestaurantSuggestionsListComponent,
   ],
   imports: [
-    BrowserModule,
     RoutingModule,
-    FlexLayoutModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
+    UiModule,
     HttpClientModule
   ],
   providers: [RestaurantsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

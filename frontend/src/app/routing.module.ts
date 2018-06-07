@@ -5,7 +5,7 @@ import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 
@@ -16,4 +16,5 @@ const routes: Routes = [
   declarations: [],
   exports: [RouterModule]
 })
-export class RoutingModule { }
+export class RoutingModule {
+}

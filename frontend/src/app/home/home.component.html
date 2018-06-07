@@ -1,5 +1,16 @@
-<div  fxLayout="column" fxLayoutAlign="center center">
-  <app-restaurant *ngFor="let restaurant of restaurants"
-                  [restaurant]="restaurant">
-  </app-restaurant>
-</div>
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav #sidenav mode="over">
+    <button mat-icon-button class="close-sidenav-button">
+      <mat-icon (click)="sidenav.close()">arrow_back_ios</mat-icon>
+    </button>
+
+    <app-restaurant-suggestions-map [restaurants]="restaurants"></app-restaurant-suggestions-map>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-restaurant-suggestions-list [restaurants]="restaurants"></app-restaurant-suggestions-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<footer>
+  <button mat-button (click)="sidenav.toggle()">Display Map</button>
+</footer>
