@@ -39,7 +39,10 @@ These instructions will get you a copy of the project up and running on your loc
  Run backend application located in the `/backend` directory.
  
      mvn spring-boot:run  
-     
+ 
+ To see endpoints documentation     
+	 localhost:8080/swagger-ui.html 
+	 
 ### Running the tests
 - how to run fronted tests ? [check here](frontend/README.md)
 - how to run backend tests ? [check here](backend/README.md)

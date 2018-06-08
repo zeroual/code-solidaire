@@ -23,6 +23,7 @@
         <google-maps-services.version>0.2.7</google-maps-services.version>
         <junit-jupiter-api.version>5.2.0</junit-jupiter-api.version>
         <junit-platform-launcher.version>1.2.0</junit-platform-launcher.version>
+        <springfox.swagger.version>2.7.0</springfox.swagger.version>
     </properties>
 
     <dependencies>
@@ -65,7 +66,21 @@
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform-launcher.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-common</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
