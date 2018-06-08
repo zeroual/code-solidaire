@@ -1,3 +1,4 @@
+import { GeolocationService } from './shared/geolocation.service';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
@@ -33,7 +34,7 @@ import {NgQrScannerModule} from "angular2-qrscanner";
     NgQrScannerModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [RestaurantsService],
+  providers: [RestaurantsService, GeolocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

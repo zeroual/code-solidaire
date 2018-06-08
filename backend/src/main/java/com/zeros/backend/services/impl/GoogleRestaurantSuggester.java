@@ -31,11 +31,11 @@ public class GoogleRestaurantSuggester implements RestaurantSuggester {
         this.routeService= routeestimator;
     }
 
-    public List<RestaurantSuggestion> getNearbyRestaurant() {
-        Location userLocation = new Location(48.874037, 2.339619);
+    public List<RestaurantSuggestion> getNearbyRestaurant(double latitude, double longitude) {
+        Location userLocation = new Location(latitude, longitude);
         try {
             PlacesSearchResponse searchResponse = PlacesApi.nearbySearchQuery(geoApiContext,
-                    new LatLng(userLocation.getLat(), userLocation.getLng()))
+            		new LatLng(userLocation.getLat(), userLocation.getLng()))
                     .radius(1000)
                     .type(PlaceType.RESTAURANT)
                     .await();

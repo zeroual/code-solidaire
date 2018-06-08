@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface RestaurantSuggester {
 
-    List<RestaurantSuggestion> getNearbyRestaurant();
+    List<RestaurantSuggestion> getNearbyRestaurant(double latitude, double longitude);
 }
