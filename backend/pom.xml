@@ -23,6 +23,8 @@
         <google-maps-services.version>0.2.7</google-maps-services.version>
         <junit-jupiter-api.version>5.2.0</junit-jupiter-api.version>
         <junit-platform-launcher.version>1.2.0</junit-platform-launcher.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <junit-platform-surefire-provider.version>1.2.0</junit-platform-surefire-provider.version>
     </properties>
 
     <dependencies>
@@ -65,7 +67,7 @@
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform-launcher.version}</version>
         </dependency>
-        
+
     </dependencies>
 
     <build>
@@ -76,6 +78,17 @@
                 <configuration>
                     <finalName>app</finalName>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit-platform-surefire-provider.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
