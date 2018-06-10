@@ -32,8 +32,8 @@ export class RestaurantsService {
         lng: restaurant.location.lng,
         photos: photos,
         photo: photos[0],
-        routeDistance: restaurant.route.distance + "m",
-        routeDuration: (restaurant.route.duration / 60) + "min"
+        routeDistance: restaurant.route.distance,
+        routeDuration: restaurant.route.duration
       }
     });
   }

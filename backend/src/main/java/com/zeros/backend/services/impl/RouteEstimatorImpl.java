@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.time.Duration;
 
 @Service
@@ -37,8 +39,8 @@ public class RouteEstimatorImpl implements RouteEstimator {
                     distanceMatrix.rows[0].elements.length == 0)
                 throw new RuntimeException("No distance and duration found.");
 
-            return new Route.newBuilder().distance(new BigDecimal(distanceMatrix.rows[0].elements[0].distance.inMeters))
-                    .duration(Duration.ofSeconds(distanceMatrix.rows[0].elements[0].duration.inSeconds)).build();
+            return new Route(new BigDecimal(distanceMatrix.rows[0].elements[0].distance.inMeters),
+            		new BigDecimal(distanceMatrix.rows[0].elements[0].duration.inSeconds));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

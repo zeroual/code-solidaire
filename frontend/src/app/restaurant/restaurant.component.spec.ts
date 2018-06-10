@@ -28,6 +28,9 @@ describe('RestaurantComponent', () => {
       lng: 0,
       photos: [],
       photo: 'photo'
+      photos:[],
+      photo:'photo'
+      // TODO : test
     };
     fixture.detectChanges();
     const restaurantName = element.querySelector('.restaurant-name').textContent.trim();
