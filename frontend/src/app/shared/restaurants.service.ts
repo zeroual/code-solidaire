@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/internal/operators';
 import {AppSettings} from './app-settings.service';
 import {Restaurant} from "./Restaurant";
@@ -15,8 +15,11 @@ export class RestaurantsService {
     this.googleMapsKey = appSetting.googleMapsKey;
   }
 
-  public getNearbyRestaurants(): Promise<Restaurant[]> {
-    return this.httpClient.get('/api/v1/restaurants').pipe(map(r => this.mapToRestaurant(r))).toPromise();
+  public getNearbyRestaurants(latitude: number, longitude: number): Promise<Restaurant[]> {
+    const params = new HttpParams()
+      .set('longitude', String(longitude))
+      .set('latitude', String(latitude));
+    return this.httpClient.get('/api/v1/restaurants', {params}).pipe(map(r => this.mapToRestaurant(r))).toPromise();
   }
 
   private mapToRestaurant(restaurants: any): Restaurant[] {

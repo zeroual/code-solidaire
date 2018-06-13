@@ -35,7 +35,9 @@ describe('RestaurantsService', () => {
       }
     ];
 
-    restaurantService.getNearbyRestaurants().then(restaurants => {
+    let latitude = 0;
+    let longitude = 0;
+    restaurantService.getNearbyRestaurants(latitude, longitude).then(restaurants => {
 
       let googlePlacePhotoUrl = mockAppSettings.googlePlacePhotoUrl;
       let googleMapsKey = mockAppSettings.googleMapsKey;
@@ -50,7 +52,7 @@ describe('RestaurantsService', () => {
         photo: realUrlPhoto
       }]);
     });
-    httpBackend.expectOne('/api/v1/restaurants').flush(expectedResponse);
+    httpBackend.expectOne('/api/v1/restaurants?longitude=0&latitude=0').flush(expectedResponse);
 
   });
 });

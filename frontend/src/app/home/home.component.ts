@@ -1,3 +1,4 @@
+import { GeolocationService } from './../shared/geolocation.service';
 import {Component, OnInit} from '@angular/core';
 import {RestaurantsService} from '../shared/restaurants.service';
 import {Restaurant} from "../shared/Restaurant";
@@ -11,12 +12,16 @@ export class HomeComponent implements OnInit {
 
   public restaurants: Restaurant[] = [];
 
-  constructor(private restaurantsService: RestaurantsService) {
+  constructor(private restaurantsService: RestaurantsService, private geoLocationService: GeolocationService) {
   }
 
   ngOnInit() {
-    this.restaurantsService.getNearbyRestaurants()
-      .then(restaurants => this.restaurants = restaurants);
+
+      let promise = this.geoLocationService.getCurrentPosition();
+      promise.then((crd) => {
+        this.restaurantsService.getNearbyRestaurants(crd.latitude, crd.longitude)
+        .then(restaurants => this.restaurants = restaurants)
+      });
   }
 
 }

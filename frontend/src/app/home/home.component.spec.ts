@@ -2,6 +2,7 @@ import {async, ComponentFixture, ComponentFixtureAutoDetect, TestBed} from '@ang
 
 import {HomeComponent} from './home.component';
 import {RestaurantsService} from '../shared/restaurants.service';
+import {GeolocationService} from './../shared/geolocation.service';
 import {Restaurant} from "../shared/Restaurant";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 import {UiModule} from "../ui.module";
@@ -18,10 +19,14 @@ describe('HomeComponent', () => {
     photos: [],
     photo: ''
   }];
+  const coordinates = {latitude: 0, longitude: 0};
   const mockRestaurantService = {
     getNearbyRestaurants: jasmine.createSpy('getNearbyRestaurants').and.returnValue(Promise.resolve(restaurants))
   };
 
+  const mockGeoLocationService = {
+    getCurrentPosition: jasmine.createSpy('getCurrentPosition').and.returnValue(Promise.resolve(coordinates))
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
@@ -32,7 +37,8 @@ describe('HomeComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     }).overrideComponent(HomeComponent, {
       set: {
-        providers: [{provide: RestaurantsService, useValue: mockRestaurantService}]
+        providers: [{provide: RestaurantsService, useValue: mockRestaurantService},
+            {provide: GeolocationService, useValue: mockGeoLocationService}]
       }
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(HomeComponent);
