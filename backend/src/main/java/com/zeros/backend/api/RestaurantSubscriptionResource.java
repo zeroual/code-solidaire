@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class RestaurantSubscriptionResource {
 
     @Autowired
-    private RestaurantSubscriber restaurantAffiliateNetworwk;
+    private RestaurantSubscriber restaurantSubscriber;
 
     @PostMapping("/restaurant/subscribe")
     public void subscribe(@RequestBody RestaurantSubscriptionRequest restaurantSubscriptionRequest) {
-        restaurantAffiliateNetworwk.subscribe(restaurantSubscriptionRequest.toDomain());
+        restaurantSubscriber.subscribe(restaurantSubscriptionRequest.toDomain());
     }
 
     @ExceptionHandler(AlreadySubscribedRestaurantException.class)
