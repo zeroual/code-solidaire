@@ -25,6 +25,7 @@
         <junit-platform-launcher.version>1.2.0</junit-platform-launcher.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <junit-platform-surefire-provider.version>1.2.0</junit-platform-surefire-provider.version>
+        <springfox.swagger.version>2.7.0</springfox.swagger.version>
     </properties>
 
     <dependencies>
@@ -66,6 +67,21 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform-launcher.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-common</artifactId>
+            <version>${springfox.swagger.version}</version>
         </dependency>
 
     </dependencies>
