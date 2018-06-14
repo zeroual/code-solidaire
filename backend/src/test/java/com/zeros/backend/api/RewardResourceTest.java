@@ -1,7 +1,7 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.models.Restaurant;
-import com.zeros.backend.repositories.RestaurantRepository;
+import com.zeros.backend.domain.models.Restaurant;
+import com.zeros.backend.domain.repositories.RestaurantRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

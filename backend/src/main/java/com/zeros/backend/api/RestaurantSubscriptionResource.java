@@ -1,8 +1,8 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.exceptions.AlreadySubscribedRestaurantException;
-import com.zeros.backend.models.Restaurant;
-import com.zeros.backend.services.RestaurantSubscriber;
+import com.zeros.backend.domain.exceptions.AlreadySubscribedRestaurantException;
+import com.zeros.backend.domain.models.Restaurant;
+import com.zeros.backend.domain.services.RestaurantSubscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
