@@ -6,5 +6,5 @@ export interface Restaurant {
   photos: string[];
   photo: string;
   routeDuration: string;
-  routedistance: string;
+  routeDistance: string;
 }

@@ -32,7 +32,8 @@ describe('RestaurantsService', () => {
           'lng': 0,
         },
         'photosReference': [photoReference],
-        //  TODO test
+        'routeDistance': '3600',
+        'routeDuration': '70'
       }
     ];
 
@@ -50,7 +51,9 @@ describe('RestaurantsService', () => {
         lat: 0,
         lng: 0,
         photos: [realUrlPhoto],
-        photo: realUrlPhoto
+        photo: realUrlPhoto,
+        routeDistance: '3600',
+        routeDuration: '70'
       }]);
     });
     httpBackend.expectOne('/api/v1/restaurants?longitude=0&latitude=0').flush(expectedResponse);
