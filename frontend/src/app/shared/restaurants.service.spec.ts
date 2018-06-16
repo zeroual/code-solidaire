@@ -3,6 +3,8 @@ import {TestBed} from '@angular/core/testing';
 import {RestaurantsService} from './restaurants.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {AppSettings} from './app-settings.service';
+import {DurationFormatter} from "../shared/duration-formatter.pipe";
+import {DistanceFormatter} from "../shared/distance-formatter.pipe";
 
 describe('RestaurantsService', () => {
   let httpBackend: HttpTestingController;
@@ -32,6 +34,8 @@ describe('RestaurantsService', () => {
           'lng': 0,
         },
         'photosReference': [photoReference],
+        'routeDuration': 3600,
+        'routeDistance': 70,
       }
     ];
 
@@ -49,7 +53,9 @@ describe('RestaurantsService', () => {
         lat: 0,
         lng: 0,
         photos: [realUrlPhoto],
-        photo: realUrlPhoto
+        photo: realUrlPhoto,
+        routeDuration: '3600',
+        routeDistance: '70'
       }]);
     });
     httpBackend.expectOne('/api/v1/restaurants?longitude=0&latitude=0').flush(expectedResponse);

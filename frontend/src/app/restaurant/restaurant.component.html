@@ -3,4 +3,7 @@
     <mat-card-subtitle class="restaurant-name">{{restaurant.name}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="restaurant.photo">
+  
+    <mat-card-subtitle class="restaurant-route-distance">{{restaurant.routeDistance | distanceFormatter }}</mat-card-subtitle>
+    <mat-card-subtitle class="restaurant-route-duration">{{restaurant.routeDuration | durationFormatter }}</mat-card-subtitle>
 </mat-card>
