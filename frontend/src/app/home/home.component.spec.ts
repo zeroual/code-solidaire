@@ -17,7 +17,9 @@ describe('HomeComponent', () => {
     lat: 23,
     lng: 2,
     photos: [],
-    photo: ''
+    photo: '',
+    routeDuration: '3600',
+    routeDistance: '70'
   }];
   const coordinates = {latitude: 0, longitude: 0};
   const mockRestaurantService = {

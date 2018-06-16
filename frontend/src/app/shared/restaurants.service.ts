@@ -31,7 +31,9 @@ export class RestaurantsService {
         lat: restaurant.location.lat,
         lng: restaurant.location.lng,
         photos: photos,
-        photo: photos[0]
+        photo: photos[0],
+        routeDistance: restaurant.route.distance,
+        routeDuration: restaurant.route.duration
       }
     });
   }

@@ -2,6 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RestaurantComponent} from './restaurant.component';
 import {UiModule} from "../ui.module";
+import {DurationFormatter} from "../shared/duration-formatter.pipe";
+import {DistanceFormatter} from "../shared/distance-formatter.pipe";
 
 describe('RestaurantComponent', () => {
   let component: RestaurantComponent;
@@ -10,7 +12,7 @@ describe('RestaurantComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RestaurantComponent],
+      declarations: [RestaurantComponent, DurationFormatter, DistanceFormatter],
       imports: [UiModule]
     })
       .compileComponents().then(() => {
@@ -27,7 +29,9 @@ describe('RestaurantComponent', () => {
       lat: 0,
       lng: 0,
       photos: [],
-      photo: 'photo'
+      photo: 'photo',
+      routeDuration: '3600',
+      routeDistance: '70'
     };
     fixture.detectChanges();
     const restaurantName = element.querySelector('.restaurant-name').textContent.trim();
