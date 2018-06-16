@@ -5,4 +5,6 @@ export interface Restaurant {
   lng: number;
   photos: string[];
   photo: string;
+  routeDuration: string;
+  routeDistance: string;
 }

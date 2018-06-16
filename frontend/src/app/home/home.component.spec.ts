@@ -6,6 +6,8 @@ import {GeolocationService} from './../shared/geolocation.service';
 import {Restaurant} from "../shared/Restaurant";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 import {UiModule} from "../ui.module";
+import {DurationFormatter} from "../shared/duration-formatter.pipe";
+import {DistanceFormatter} from "../shared/distance-formatter.pipe";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,7 +19,9 @@ describe('HomeComponent', () => {
     lat: 23,
     lng: 2,
     photos: [],
-    photo: ''
+    photo: '',
+    routeDuration: '3600',
+    routeDistance: '70'
   }];
   const coordinates = {latitude: 0, longitude: 0};
   const mockRestaurantService = {
@@ -29,7 +33,7 @@ describe('HomeComponent', () => {
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [HomeComponent,DistanceFormatter, DurationFormatter],
       imports: [UiModule],
       providers: [
         {provide: ComponentFixtureAutoDetect, useValue: true},

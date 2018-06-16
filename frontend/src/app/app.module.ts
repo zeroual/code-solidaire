@@ -15,6 +15,8 @@ import {RestaurantSuggestionsListComponent} from "./restaurant-suggestions-list/
 import {RestaurantSuggestionsMapComponent} from "./restaurant-suggestions-map/restaurant-suggestions-map.component";
 import {MapViewerComponent} from "./map-viewer/map-viewer.component";
 import {NgQrScannerModule} from "angular2-qrscanner";
+import {DistanceFormatter} from "./shared/distance-formatter.pipe";
+import {DurationFormatter} from "./shared/duration-formatter.pipe";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import {NgQrScannerModule} from "angular2-qrscanner";
     RestaurantSuggestionsMapComponent,
     RestaurantSuggestionsListComponent,
     QrcodePageComponent,
-    ScannerComponent
+    ScannerComponent,
+    DistanceFormatter ,
+    DurationFormatter
   ],
   imports: [
     RoutingModule,
