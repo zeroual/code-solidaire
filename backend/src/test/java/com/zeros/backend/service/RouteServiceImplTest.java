@@ -2,9 +2,9 @@ package com.zeros.backend.service;
 
 import com.google.maps.model.TravelMode;
 import com.zeros.backend.BackendApplication;
-import com.zeros.backend.services.Location;
-import com.zeros.backend.services.Route;
-import com.zeros.backend.services.RouteEstimator;
+import com.zeros.backend.domain.services.Location;
+import com.zeros.backend.domain.services.Route;
+import com.zeros.backend.domain.services.RouteEstimator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

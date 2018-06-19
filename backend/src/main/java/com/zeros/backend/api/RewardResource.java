@@ -1,7 +1,7 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.exceptions.RestaurantNotFoundException;
-import com.zeros.backend.services.MealRewarder;
+import com.zeros.backend.domain.exceptions.RestaurantNotFoundException;
+import com.zeros.backend.domain.services.MealRewarder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

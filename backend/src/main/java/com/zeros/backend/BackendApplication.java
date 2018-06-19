@@ -1,7 +1,7 @@
 package com.zeros.backend;
 
-import com.zeros.backend.models.Restaurant;
-import com.zeros.backend.repositories.RestaurantRepository;
+import com.zeros.backend.domain.models.Restaurant;
+import com.zeros.backend.domain.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

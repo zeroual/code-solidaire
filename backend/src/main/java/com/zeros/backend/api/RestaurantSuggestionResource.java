@@ -1,7 +1,7 @@
 package com.zeros.backend.api;
 
-import com.zeros.backend.services.RestaurantSuggester;
-import com.zeros.backend.services.RestaurantSuggestion;
+import com.zeros.backend.domain.services.RestaurantSuggester;
+import com.zeros.backend.domain.services.RestaurantSuggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
