@@ -103,20 +103,20 @@ jobs:
           working_directory: backend
           command: docker build -t backend .
 
-      - run:
-          name: Deploy Master to Heroku
-          working_directory: backend
-          command: docker login --username=${HEROKU_USERNAME} --password=${HEROKU_PASSWORD} registry.heroku.com
+          #      - run:
+          #name: Deploy GKE
+          #working_directory: backend
+          #command: docker login --username=${HEROKU_USERNAME} --password=${HEROKU_PASSWORD} registry.heroku.com
 
-      - run: docker tag backend registry.heroku.com/code-solidaire/web
-      - run: docker push registry.heroku.com/code-solidaire/web
+          #- run: docker tag backend registry.heroku.com/code-solidaire/web
+          #- run: docker push registry.heroku.com/code-solidaire/web
 
 
 workflows:
   version: 2
   build_app:
     jobs:
-      - build-font
+      - build-font:
       - build-back:
           requires:
             - build-font
